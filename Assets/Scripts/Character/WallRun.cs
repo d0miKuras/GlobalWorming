@@ -180,7 +180,8 @@ public class WallRun : MonoBehaviour
         {
             targetAngle = Mathf.Sign(dir) * maxAngleRoll;
         }
-        return Mathf.LerpAngle(cameraAngle, targetAngle, Mathf.Max(elapsedTimeSinceWallAttach, elapsedTimeSinceWallDetach / cameraTransitionDuration));
+        // return Mathf.LerpAngle(cameraAngle, targetAngle, Mathf.Max(elapsedTimeSinceWallAttach, elapsedTimeSinceWallDetach / cameraTransitionDuration));
+        return Mathf.LerpAngle(cameraAngle, targetAngle, cameraTransitionDuration);
     }
 
     public Vector3 GetWallJumpDirection()
