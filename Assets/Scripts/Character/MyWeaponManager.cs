@@ -245,13 +245,13 @@ public class MyWeaponManager : MonoBehaviour
         return false;
     }
 
-    // returns the currently active weaopn
+    // returns the currently active weapon
     public WeaponController GetActiveWeapon()
     {
         return GetWeaponAtSlot(activeWeaponIndex);
     }
 
-    // returns a weapon at a given slot indee
+    // returns a weapon at a given slot index
     public WeaponController GetWeaponAtSlot(int index)
     {
         // find active weapon in the weapon slots

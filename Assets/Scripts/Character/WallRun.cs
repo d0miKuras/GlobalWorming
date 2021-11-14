@@ -20,8 +20,6 @@ public class WallRun : MonoBehaviour
     public float wallGravityDownForce = 20f;
     public bool useSprint;
 
-    [Space]
-    // public Volume wallRunVolume;
 
     PlayerCharacterController _controller;
     PlayerInputs _inputs;
@@ -36,9 +34,6 @@ public class WallRun : MonoBehaviour
     float elapsedTimeSinceWallAttach = 0f;
     float elapsedTimeSinceWallDetach = 0f;
     bool jumping;
-
-    // float lastVolumeValue = 0f;
-    // float noiseAmplitude;
 
     bool isPLayerGrounded() => _controller.isGrounded;
     public bool IsWallRunning() => isWallRunning; // allows access from outside, e.g. character controller script
@@ -180,7 +175,6 @@ public class WallRun : MonoBehaviour
         {
             targetAngle = Mathf.Sign(dir) * maxAngleRoll;
         }
-        // return Mathf.LerpAngle(cameraAngle, targetAngle, Mathf.Max(elapsedTimeSinceWallAttach, elapsedTimeSinceWallDetach / cameraTransitionDuration));
         return Mathf.LerpAngle(cameraAngle, targetAngle, cameraTransitionDuration);
     }
 

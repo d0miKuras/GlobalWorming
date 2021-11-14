@@ -57,8 +57,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2101302366859081131, guid: 51d1e898f922e4256b5c40b4470de322, type: 3}
   rotationSpeed: 6
   returnSpeed: 25
-  hipfireCameraRecoilRotation: {x: 2, y: 2, z: 2}
-  adsCameraRecoilRotation: {x: 5, y: 5, z: 5}
+  hipfireCameraRecoilRotation: {x: 2, y: 2, z: 0}
+  adsCameraRecoilRotation: {x: 5, y: 5, z: 0}
   weaponRecoil_Position: {fileID: 6512396196136910742}
   weaponRecoil_Rotation: {fileID: 7434487140835475746}
   weaponRecoil_PositionalSpeed: 8
