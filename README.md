@@ -1,5 +1,24 @@
 # GlobalWorming
 
+# Structure:
+- A Player object must have:
+  - a CharacterController component;
+  - a PlayerInput input system component;
+  - a PlayerInputs script;
+  - a PlayerCharacterController script;
+  - a WallRun script;
+  - a MyWeaponManagerScript;
+
+- Every weapon must have:
+  - a Sway Script;
+  - a Weapon Controller Script;
+  - a parent-children structure identical to CubePistol prefab. Please use it as an example.
+
+- Every projectile must have:
+  - a collider;
+  - a ProjectileBase script;
+  - a ProjectileStandard script.
+
 # Variables
 ### PlayerController
 The player controller is really well documented. If you're a coder, I left a lot of extensive comments throughout the script. If you're a designer, hover over the variables to reveal the tooltip. If you still have any questions, message me on discord.
