@@ -121,7 +121,7 @@ MonoBehaviour:
   gravityDownAcceleration: 0
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 65
 --- !u!1 &2780042657679230134
 GameObject:
   m_ObjectHideFlags: 0

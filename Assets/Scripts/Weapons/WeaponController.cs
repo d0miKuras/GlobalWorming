@@ -39,6 +39,7 @@ public class WeaponController : MonoBehaviour
 
     [Space(10)]
     [Header("Shoot Parameters")]
+    public float damage = 10.0f;
     public float delayBetweenShots;
     public int maxAmmo = 10;
     public float projectileVelocity;

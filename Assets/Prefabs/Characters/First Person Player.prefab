@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 1761457050208697361}
   - component: {fileID: 1761457050208697362}
   - component: {fileID: 1761457050208697363}
+  - component: {fileID: 1657015556}
   m_Layer: 7
   m_Name: First Person Player
   m_TagString: Untagged
@@ -697,7 +698,7 @@ MonoBehaviour:
   normalizedAngleThreshold: 0.3
   jumpDuration: 0.25
   wallBouncing: 3
-  cameraTransitionDuration: 0.5
+  cameraTransitionDuration: 0.04
   wallGravityDownForce: 20
   useSprint: 0
 --- !u!114 &1761457050208697363
@@ -718,6 +719,19 @@ MonoBehaviour:
   weaponParent: {fileID: 1761457049589004155}
   downWeaponPosition: {fileID: 1761457049589004155}
   weaponSwitchDelay: 0
+--- !u!114 &1657015556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761457050208697364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2733295fd6e054a4c8f12b8c7a636023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1761457050874840958
 GameObject:
   m_ObjectHideFlags: 0

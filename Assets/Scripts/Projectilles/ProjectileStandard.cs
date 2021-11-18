@@ -189,6 +189,10 @@ public class ProjectileStandard : MonoBehaviour
     void OnHit(Vector3 point, Vector3 normal, Collider collider)
     {
         // TODO: add damage
+        if(collider.gameObject.tag == "Enemy" || collider.gameObject.tag == "Player")
+        {
+            collider.gameObject.GetComponent<Health>().TakeDamage(m_ProjectileBase.weapon.damage);
+        }
 
         // impact vfx
         if (impactVFX)
