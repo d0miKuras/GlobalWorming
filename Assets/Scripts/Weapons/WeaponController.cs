@@ -18,7 +18,7 @@ public class WeaponController : MonoBehaviour
     #region General
 
     [Header("Information")]
-    [Tooltip("The name that will be displayed in the UI for this weapon")]
+    [Tooltip("The name that will be displayed in the UI for this weapon.")]
     public string weaponName;
     public WeaponShootType shootType;
 
@@ -29,9 +29,9 @@ public class WeaponController : MonoBehaviour
 
     #region Internal References
     [Header("Internal References")]
-    [Tooltip("The root object for the weapon, this is what will be deactivated when the weapon isn't active")]
+    [Tooltip("The root object for the weapon, this is what will be deactivated when the weapon isn't active.")]
     public GameObject weaponRoot;
-    [Tooltip("Tip of the weapon, where the projectiles are shot")]
+    [Tooltip("Tip of the weapon, where the projectiles are shot.")]
     public Transform weaponMuzzle;
     #endregion
 
@@ -42,9 +42,12 @@ public class WeaponController : MonoBehaviour
     public float damage = 10.0f;
     public float delayBetweenShots;
     public int maxAmmo = 10;
+
+    [Tooltip("The 'speed' at which the bullet travels through the world.")]
     public float projectileVelocity;
+    [Tooltip("The strength of the randomness of the direction of the bullet on hipfire.")] 
     public float hipBloom;
-    [Tooltip("The projectile prefab")] public ProjectileBase projectilePrefab;
+    [Tooltip("The projectile prefab.")] public ProjectileBase projectilePrefab;
 
 
 
@@ -57,9 +60,11 @@ public class WeaponController : MonoBehaviour
     public float rotationSpeed = 6f;
     public float returnSpeed = 25f;
 
-    [Space()]
-    public Vector3 hipfireCameraRecoilRotation = new Vector3(2f, 2f, 2f);
-    public Vector3 adsCameraRecoilRotation = new Vector3(0.5f, 0.5f, 0.5f);
+    [Space(5)]
+    [Tooltip("The recoil vector added to the camera rotation when hipfiring.")]
+    public Vector3 hipfireCameraRecoilRotation = new Vector3(2.0f, 2.0f, 0.0f);
+    [Tooltip("The recoil vector added to the camera rotation when shooting while aiming.")]
+    public Vector3 adsCameraRecoilRotation = new Vector3(0.5f, 0.5f, 0.0f);
 
     #endregion
 
@@ -78,7 +83,6 @@ public class WeaponController : MonoBehaviour
     public Vector3 weaponRecoil_RotationAim = new Vector3(10, 4, 6);
     public Vector3 weaponRecoil_RecoilKickBackAim = new Vector3(0.015f, 0f, -0.2f);
     #endregion
-    // public float damage;
 
 
     public float aimSpeed;

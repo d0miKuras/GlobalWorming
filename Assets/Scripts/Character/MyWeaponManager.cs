@@ -28,7 +28,7 @@ public class MyWeaponManager : MonoBehaviour
 
     PlayerInputs _input;
 
-    WeaponController[] m_WeaponSlots = new WeaponController[2]; // 1 weapon slots
+    WeaponController[] m_WeaponSlots = new WeaponController[2]; // 2 weapon slots
     int m_WeaponSwitchNewWeaponIndex;
     float m_TimeStartedWeaponSwitch;
     Vector3 m_WeaponMainLocalPosition;

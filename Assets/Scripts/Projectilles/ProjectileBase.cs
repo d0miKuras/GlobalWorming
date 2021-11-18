@@ -9,8 +9,7 @@ public class ProjectileBase : MonoBehaviour
     public Vector3 initialPosition { get; private set; }
     public Vector3 initialDirection { get; private set; }
     public Vector3 inheritedMuzzleVelocity { get; private set; }
-    public float initialCharge { get; private set; }
-    // public LayerMask hittableLayers;
+    
 
 
 
@@ -25,7 +24,6 @@ public class ProjectileBase : MonoBehaviour
         initialDirection = transform.forward;
 
         inheritedMuzzleVelocity = controller.muzzleWorldVelocity;
-        // initialCharge = controller.currentCharge;
         if (onShoot != null)
         {
             onShoot.Invoke();

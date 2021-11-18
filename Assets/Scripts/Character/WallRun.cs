@@ -7,17 +7,27 @@ using UnityEngine;
 public class WallRun : MonoBehaviour
 {
 
+    [Tooltip("The maximum distance from the wall the wall detection works at. It shoots out rays of this length from the capsule into 4 directions: left, left+45, right, right-45.")]
     public float maxWallDistance = 1f;
+    [Tooltip("The number by which the speed multiplied when jumping off a wall.")]
     public float wallSpeedMultiplier = 1.2f;
+    [Tooltip("The minimum height the player has to be at after the jump for the wall run to kick in.")]
     public float minimumHeight = 1.2f;
+    [Tooltip("The maximum angle (in degrees) the camera will rotate around the Z-axis when the wall run starts.")]
     public float maxAngleRoll = 20f;
 
     [Range(0.0f, 1.0f)]
+    [Tooltip("The value the dot product of the Up vector and the normal of the wall is compared to.")]
     public float normalizedAngleThreshold = 0.1f;
+    [Tooltip("The amount of time since the player jumped before the wall run can begin. E.g. if jump duration is set to 0.25, then the wall run will begin 0.25 seconds after the jump.")]
     public float jumpDuration = 1f;
+    [Tooltip("The strength of the jump. The higher the value, the further to the side the player will go when jumping of a wall.")]
     public float wallBouncing = 3f;
+    [Tooltip("The lerp speed of the camera roll will reach Max Angle Roll. The higher the value, the fast it transitions.")]
     public float cameraTransitionDuration = 1f;
+    [Tooltip("The 'gravity' applied on the wall during the wall run. I.e. the reason the player goes downward slightly as the wall run progresses.")]
     public float wallGravityDownForce = 20f;
+    [Tooltip("If checked, the player will only be able to enter a wall run while sprinting.")]
     public bool useSprint;
 
 

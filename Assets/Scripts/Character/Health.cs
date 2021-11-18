@@ -6,6 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
+    [Tooltip("The maximum health of the unit.")]
     public float maxHealth = 100f;
     private float _currentHealth;
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        
+
         Destroy(gameObject);
     }
 }
