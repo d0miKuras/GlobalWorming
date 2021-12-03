@@ -266,12 +266,4 @@ public class PlayerInputs : MonoBehaviour
     }
     #endregion
 
-
-
-
-
-
-
-
-
 }

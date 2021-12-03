@@ -109,6 +109,7 @@ public class WallRun : MonoBehaviour
 
             if (CanWallRun())
             {
+                
                 hits = hits.ToList().Where(hit => hit.collider != null).OrderBy(hit => hit.distance).ToArray();
                 if (hits.Length > 0)
                 {

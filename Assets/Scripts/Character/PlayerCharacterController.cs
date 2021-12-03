@@ -145,9 +145,7 @@ public class PlayerCharacterController : MonoBehaviour
 
         HandleCharacterRotation();
         HandleCharacterMovement();
-
-
-
+        
         // _movementCounter += Time.deltaTime * characterVelocity.magnitude;
         HandleWeaponBob();
 
