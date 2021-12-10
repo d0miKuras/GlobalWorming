@@ -13,7 +13,6 @@ public class Navigation : MonoBehaviour
 
     public Transform goal;
     private NavMeshAgent agent;
-    private CharacterController controller;
 
     public bool MoveAcrossNavMeshesStarted { get; private set; }
     
@@ -23,17 +22,12 @@ public class Navigation : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.destination = goal.position;
         MoveAcrossNavMeshesStarted = false;
-        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if(agent.isOnOffMeshLink && !MoveAcrossNavMeshesStarted)
-        // {
-        //     StartCoroutine(MoveAcrossNavMeshLink());
-        //     MoveAcrossNavMeshesStarted=true;
-        // }
+        
     }
 
 
