@@ -108,8 +108,6 @@ GameObject:
   - component: {fileID: 6502767244618700211}
   - component: {fileID: 7895271728501496342}
   - component: {fileID: 5365287472908791516}
-  - component: {fileID: 1560641898343486726}
-  - component: {fileID: 3366992546278334739}
   m_Layer: 0
   m_Name: Pistol_design
   m_TagString: Untagged
@@ -124,7 +122,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5869783470342622985}
-  m_LocalRotation: {x: -0.3535531, y: -0.6123726, z: -0.61237264, w: 0.3535532}
+  m_LocalRotation: {x: -0.35355335, y: -0.61237246, z: -0.61237246, w: 0.35355335}
   m_LocalPosition: {x: 10.4, y: 4.25, z: 12.489}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -182,58 +180,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1560641898343486726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5869783470342622985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15531d46ee961498fbc757a4ae530e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponSwayIntensity: 0
-  weaponSwaySmoothing: 0
-  swayClampX: 0
-  swayClampY: 0
---- !u!114 &3366992546278334739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5869783470342622985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db79c043505f3441183ba40aafe3d999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponName: Pistol
-  shootType: 0
-  weaponRoot: {fileID: 0}
-  weaponMuzzle: {fileID: 0}
-  damage: 10
-  delayBetweenShots: 0
-  maxAmmo: 10
-  projectileVelocity: 0
-  hipBloom: 0
-  projectilePrefab: {fileID: 0}
-  rotationSpeed: 6
-  returnSpeed: 25
-  hipfireCameraRecoilRotation: {x: 2, y: 2, z: 0}
-  adsCameraRecoilRotation: {x: 0.5, y: 0.5, z: 0}
-  weaponRecoil_Position: {fileID: 0}
-  weaponRecoil_Rotation: {fileID: 0}
-  weaponRecoil_PositionalSpeed: 8
-  weaponRecoil_RotationalSpeed: 8
-  weaponRecoil_PositionalReturnSpeed: 18
-  weaponRecoil_RotationalReturnSpeed: 38
-  weaponRecoil_RecoilRotation: {x: 10, y: 5, z: 7}
-  weaponRecoil_RecoilKickBack: {x: 0.015, y: 0, z: -0.2}
-  weaponRecoil_RotationAim: {x: 10, y: 4, z: 6}
-  weaponRecoil_RecoilKickBackAim: {x: 0.015, y: 0, z: -0.2}
-  aimSpeed: 0
-  m_RecoilRemaining: {x: 0, y: 0, z: 0}
-  m_CameraRecoilRotation: {x: 0, y: 0, z: 0}
