@@ -1,5 +1,5 @@
 {
-    "m_SGVersion": 3,
+    "m_SGVersion": 2,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "eb07a677141b40378b40b489e02e277e",
     "m_Properties": [
@@ -20,12 +20,6 @@
         }
     ],
     "m_Keywords": [],
-    "m_Dropdowns": [],
-    "m_CategoryData": [
-        {
-            "m_Id": "b9714841896148399335c8f8f59e1f7d"
-        }
-    ],
     "m_Nodes": [
         {
             "m_Id": "b78b7cd734954947bcbd40f07d07105b"
@@ -451,11 +445,10 @@
         "serializedMesh": {
             "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
             "m_Guid": ""
-        },
-        "preventRotation": false
+        }
     },
     "m_Path": "Shader Graphs",
-    "m_GraphPrecision": 0,
+    "m_ConcretePrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": ""
@@ -578,13 +571,9 @@
         "m_GuidSerialized": "ede98d62-8cb6-473f-950d-4801ed59df9a"
     },
     "m_Name": "Fill",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Fill",
     "m_DefaultReferenceName": "Fill",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1213,8 +1202,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 2,
-    "m_PositionSource": 0
+    "m_Space": 2
 }
 
 {
@@ -1663,13 +1651,9 @@
         "m_GuidSerialized": "57f7693a-eab1-4f92-b13f-59f48156d84d"
     },
     "m_Name": "Liquid_surface_color",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Liquid_surface_color",
     "m_DefaultReferenceName": "Liquid_surface_color",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1680,7 +1664,6 @@
         "b": 0.0,
         "a": 1.0
     },
-    "isMainColor": false,
     "m_ColorMode": 1
 }
 
@@ -1972,13 +1955,9 @@
         "m_GuidSerialized": "d3433536-f2ad-427a-b009-8c19268b5103"
     },
     "m_Name": "WobbleZ",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "WobbleZ",
     "m_DefaultReferenceName": "WobbleZ",
     "m_OverrideReferenceName": "_WobbleZ",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -2325,13 +2304,9 @@
         "m_GuidSerialized": "08e0a198-8db0-4124-949a-6556898994cc"
     },
     "m_Name": "WobbleX",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "WobbleX",
     "m_DefaultReferenceName": "WobbleX",
     "m_OverrideReferenceName": "_WobbleX",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -2543,17 +2518,11 @@
     "m_ActiveSubTarget": {
         "m_Id": "05e91e97fc414c079b02ea0c0b9ee5c7"
     },
-    "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
-    "m_ZTestMode": 4,
-    "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
-    "m_RenderFace": 0,
+    "m_TwoSided": true,
     "m_AlphaClip": true,
-    "m_CastShadows": true,
-    "m_ReceiveShadows": true,
-    "m_CustomEditorGUI": "",
-    "m_SupportVFX": false
+    "m_CustomEditorGUI": ""
 }
 
 {
@@ -2705,8 +2674,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 0,
-    "m_PositionSource": 0
+    "m_Space": 0
 }
 
 {
@@ -3001,13 +2969,9 @@
         "m_GuidSerialized": "88770b98-6232-42c3-877e-f283edbd1772"
     },
     "m_Name": "Liquid_color",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Liquid_color",
     "m_DefaultReferenceName": "Liquid_color",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -3018,7 +2982,6 @@
         "b": 0.02254650555551052,
         "a": 0.0
     },
-    "isMainColor": false,
     "m_ColorMode": 1
 }
 
