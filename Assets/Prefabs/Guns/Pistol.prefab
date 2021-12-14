@@ -220,15 +220,15 @@ MonoBehaviour:
   weaponRoot: {fileID: 6418618832652323795}
   weaponMuzzle: {fileID: 6625897938034809851}
   damage: 10
-  delayBetweenShots: 0.2
+  delayBetweenShots: 0.1
   maxAmmo: 10
   projectileVelocity: 150
   hipBloom: 0
   projectilePrefab: {fileID: -6026499980388658381, guid: 4116761365faf41418d270e9f9679c06, type: 3}
   rotationSpeed: 30
   returnSpeed: 5
-  hipfireCameraRecoilRotation: {x: 10, y: 10, z: 0}
-  adsCameraRecoilRotation: {x: 5, y: 5, z: 0}
+  hipfireCameraRecoilRotation: {x: 5, y: 5, z: 0}
+  adsCameraRecoilRotation: {x: 2.5, y: 2.5, z: 0}
   weaponRecoil_Position: {fileID: 1049447401399452735}
   weaponRecoil_Rotation: {fileID: 849201924681786483}
   weaponRecoil_PositionalSpeed: 8

@@ -44,6 +44,9 @@ public class PlayerInputs : MonoBehaviour
     [SerializeField]
     private bool fireReleased;
 
+    [SerializeField]
+    private bool reloadPressed;
+
     [Space(5)]
     [Header("Trigger settings")]
     [SerializeField]
@@ -143,6 +146,11 @@ public class PlayerInputs : MonoBehaviour
         SetAim(value.performed);
     }
 
+    public void OnReload(InputAction.CallbackContext value)
+    {
+        SetReload(value.performed);
+    }
+
     #endregion
 
     #region Getters
@@ -206,6 +214,11 @@ public class PlayerInputs : MonoBehaviour
     {
         return analogMovement;
     }
+
+    public bool GetReload()
+    {
+        return reloadPressed;
+    }
     #endregion
 
     #region Setters
@@ -263,6 +276,11 @@ public class PlayerInputs : MonoBehaviour
             aim = !aim;
         else
             aim = performed;
+    }
+
+    private void SetReload(bool performed)
+    {
+        reloadPressed = performed;
     }
     #endregion
 

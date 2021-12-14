@@ -76,6 +76,12 @@ public class MyWeaponManager : MonoBehaviour
                 SwitchWeapon(true);
             }
         }
+
+        if(_input.GetReload())
+        {
+            Reload();
+        }
+
     }
 
     private void LateUpdate()
@@ -312,6 +318,13 @@ public class MyWeaponManager : MonoBehaviour
             t_anchor.localPosition = Vector3.Lerp(t_anchor.localPosition, t_state_hip.localPosition, GetActiveWeapon().aimSpeed * Time.deltaTime);
             // isAiming = false;
         }
+    }
+
+    void Reload()
+    {
+        m_WeaponSwitchState = WeaponSwitchState.Down;
+        StartCoroutine(GetActiveWeapon().HandleReload());
+        m_WeaponSwitchState = WeaponSwitchState.Up;
     }
 
     #endregion

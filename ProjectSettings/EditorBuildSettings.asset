@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Containers_Map.unity
+    guid: 969d94ccff2084d4484a07197863178b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f2bb06e8d7bcf46f7828bdedc2e0e2b9, type: 2}

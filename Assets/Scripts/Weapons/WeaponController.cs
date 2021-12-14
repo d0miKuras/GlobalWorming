@@ -47,6 +47,7 @@ public class WeaponController : MonoBehaviour
     public float projectileVelocity;
     [Tooltip("The strength of the randomness of the direction of the bullet on hipfire.")] 
     public float hipBloom;
+    public float reloadTime = 0.5f;
     [Tooltip("The projectile prefab.")] public ProjectileBase projectilePrefab;
 
 
@@ -254,5 +255,10 @@ public class WeaponController : MonoBehaviour
         return (float)m_CurrentAmmo/maxAmmo;
     }
 
+    public IEnumerator HandleReload()
+    {
+        yield return new WaitForSeconds(reloadTime);
+        m_CurrentAmmo = maxAmmo;
+    }
     #endregion
 }
