@@ -38,10 +38,6 @@ public class AgentLinkMover : MonoBehaviour
                     yield return StartCoroutine(Curve(agent, 0.5f));
                 agent.CompleteOffMeshLink();
 
-                if(fixRotationJumping)
-                {
-                    transform.rotation = Quaternion.LookRotation((agent.destination - agent.transform.position).normalized);
-                }
             }
             yield return null;
         }
@@ -53,6 +49,10 @@ public class AgentLinkMover : MonoBehaviour
         Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
         while (agent.transform.position != endPos)
         {
+            if (fixRotationJumping)
+            {
+                transform.rotation = Quaternion.LookRotation((agent.destination - agent.transform.position).normalized);
+            }
             agent.transform.position = Vector3.MoveTowards(agent.transform.position, endPos, agent.speed * Time.deltaTime);
             yield return null;
         }
@@ -66,6 +66,10 @@ public class AgentLinkMover : MonoBehaviour
         float normalizedTime = 0.0f;
         while (normalizedTime < 1.0f)
         {
+            if (fixRotationJumping)
+            {
+                transform.rotation = Quaternion.LookRotation((agent.destination - agent.transform.position).normalized);
+            }
             float yOffset = height * 4.0f * (normalizedTime - normalizedTime * normalizedTime);
             agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
             normalizedTime += Time.deltaTime / duration;
@@ -81,6 +85,10 @@ public class AgentLinkMover : MonoBehaviour
         float normalizedTime = 0.0f;
         while (normalizedTime < 1.0f)
         {
+            if (fixRotationJumping)
+            {
+                transform.rotation = Quaternion.LookRotation((agent.destination - agent.transform.position).normalized);
+            }
             float yOffset = m_Curve.Evaluate(normalizedTime);
             agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
             normalizedTime += Time.deltaTime / duration;
