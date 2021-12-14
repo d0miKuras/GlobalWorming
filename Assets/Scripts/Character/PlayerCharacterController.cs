@@ -122,7 +122,7 @@ public class PlayerCharacterController : MonoBehaviour
         _inputs = GetComponent<PlayerInputs>();
         _controller = GetComponent<CharacterController>();
         _weaponManager = GetComponent<MyWeaponManager>();
-
+        Cursor.lockState = CursorLockMode.Locked;
         weaponParentOrigin = weaponParent.localPosition; // save the weapon parent origin to use in headbobbing
 
         wallRunComponent = GetComponent<WallRun>();
@@ -130,6 +130,7 @@ public class PlayerCharacterController : MonoBehaviour
         // force crouch to false (false uncrouch)
         SetCrouchingState(false, true);
         UpdateCharacterHeight(true);
+
     }
 
     // Update is called once per frame
