@@ -27,38 +27,6 @@ public class Navigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        agent.destination = goal.position;
     }
-
-
-
-    // private IEnumerator MoveAcrossNavMeshLink()
-    // {
-    //     // OffMeshLinkData data = agent.currentOffMeshLinkData;
-    //     // var link = (agent.navMeshOwner as NavMeshLink);
-    //     // // agent.updateRotation = false;
-    //     // agent.updatePosition = false;
-
-    //     // controller.Move()
-    //     // yield return null;
-        
-    //     // Vector3 startPos = agent.transform.position;
-    //     // Vector3 endPos = link.endPoint + Vector3.up * agent.baseOffset;
-    //     // float duration = (endPos-startPos).magnitude/agent.velocity.magnitude;
-    //     // float t = 0.0f;
-    //     // float tStep = 1.0f/duration;
-
-    //     // while(t<1.0f)
-    //     // {
-    //     //     transform.position = Vector3.Lerp(startPos,endPos,t);
-    //     //     agent.destination = transform.position;
-    //     //     t+=tStep*Time.deltaTime;
-    //     //     yield return null;
-    //     // }
-
-    //     // transform.position = endPos;
-    //     // agent.updateRotation = true;
-    //     // agent.CompleteOffMeshLink();
-    //     // MoveAcrossNavMeshesStarted= false;
-    // }
 }

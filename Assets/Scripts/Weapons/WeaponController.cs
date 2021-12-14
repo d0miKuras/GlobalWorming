@@ -249,6 +249,10 @@ public class WeaponController : MonoBehaviour
     }
 
 
+    public float GetAmmoRatio()
+    {
+        return (float)m_CurrentAmmo/maxAmmo;
+    }
 
     #endregion
 }

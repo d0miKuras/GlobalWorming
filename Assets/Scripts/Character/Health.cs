@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [Tooltip("The maximum health of the unit.")]
     public float maxHealth = 100f;
     private float _currentHealth;
+    public HealthBar healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class Health : MonoBehaviour
     {
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0.0f, _currentHealth);
         Debug.Log($"Damage taken: {damage}");
+        if(healthBar != null) healthBar.UpdateHealthBar(_currentHealth);
         if(_currentHealth <= 0.0f)
         {
             Die();
@@ -33,7 +35,8 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        
+        if(gameObject.tag == "Enemy") 
+            GameObject.Find("GameManager").GetComponent<GameManager>().EnemyDied(); // Decreases the amount of alive enemies in the game manager.
         Destroy(gameObject);
     }
 }

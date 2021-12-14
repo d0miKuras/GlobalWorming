@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wobble : MonoBehaviour
 {
+    public WeaponController controller;
     Renderer rend;
     Vector3 lastPos;
     Vector3 velocity;
@@ -52,6 +53,10 @@ public class Wobble : MonoBehaviour
         // keep last position
         lastPos = transform.position;
         lastRot = transform.rotation.eulerAngles;
+
+        // Debug.Log(rend.material.GetFloat("Fill"));
+        rend.material.SetFloat("Fill", controller.GetAmmoRatio());
+        
     }
 
 

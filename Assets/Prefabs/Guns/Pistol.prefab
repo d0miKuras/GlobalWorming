@@ -221,7 +221,7 @@ MonoBehaviour:
   weaponMuzzle: {fileID: 6625897938034809851}
   damage: 10
   delayBetweenShots: 0.2
-  maxAmmo: 100
+  maxAmmo: 10
   projectileVelocity: 150
   hipBloom: 0
   projectilePrefab: {fileID: -6026499980388658381, guid: 4116761365faf41418d270e9f9679c06, type: 3}
@@ -312,6 +312,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 849201924681786483}
     m_Modifications:
+    - target: {fileID: 2950621374796119265, guid: 67b4e8fc6ad42fb458684c96144f9798, type: 3}
+      propertyPath: MaxWobble
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950621374796119265, guid: 67b4e8fc6ad42fb458684c96144f9798, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 7552501514782900166}
+    - target: {fileID: 2950621374796119265, guid: 67b4e8fc6ad42fb458684c96144f9798, type: 3}
+      propertyPath: WobbleSpeed
+      value: 0.77
+      objectReference: {fileID: 0}
     - target: {fileID: 5869783470342622985, guid: 67b4e8fc6ad42fb458684c96144f9798, type: 3}
       propertyPath: m_Name
       value: Pistol

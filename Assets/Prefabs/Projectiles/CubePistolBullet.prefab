@@ -127,7 +127,7 @@ MonoBehaviour:
   root: {fileID: 344306567071217338}
   tip: {fileID: 1499809483339147265}
   maxLifeTime: 5
-  impactVFX: {fileID: 8218886333550229059, guid: 424d37f127e0e4cf98a2605cdf4be7c4, type: 3}
+  impactVFX: {fileID: 0}
   impactVFXLifetime: 5
   impactVFXSpawnOffset: 0
   trajectoryCorrectionDistance: 0

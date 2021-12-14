@@ -9,6 +9,8 @@ public class HealthBar : MonoBehaviour
 
     public Slider slider;
     public Transform cam;
+
+    public bool onEnemy = true;
     
     void Start()
     {
@@ -21,12 +23,13 @@ public class HealthBar : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.LookAt(cam.position);
+        if(onEnemy)
+            transform.LookAt(cam.position);
     }
 
     public void UpdateHealthBar(float normalizedHealth)
     {
-        slider.normalizedValue = normalizedHealth;
+        slider.value = normalizedHealth;
     }
 
 }
