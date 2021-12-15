@@ -224,7 +224,8 @@ MonoBehaviour:
   maxAmmo: 10
   projectileVelocity: 150
   hipBloom: 0
-  projectilePrefab: {fileID: -6026499980388658381, guid: 4116761365faf41418d270e9f9679c06, type: 3}
+  reloadTime: 0.5
+  projectilePrefab: {fileID: -6026499980388658381, guid: cf2111efdc820ea44842237ccdecdffc, type: 3}
   rotationSpeed: 30
   returnSpeed: 5
   hipfireCameraRecoilRotation: {x: 5, y: 5, z: 0}
