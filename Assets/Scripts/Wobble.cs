@@ -56,6 +56,7 @@ public class Wobble : MonoBehaviour
 
         // Debug.Log(rend.material.GetFloat("Fill"));
         rend.material.SetFloat("Fill", controller.GetAmmoRatio());
+        rend.enabled = controller.GetAmmoRatio() != 0.0f;
         
     }
 
