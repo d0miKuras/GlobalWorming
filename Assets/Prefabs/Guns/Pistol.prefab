@@ -222,7 +222,7 @@ MonoBehaviour:
   damage: 10
   delayBetweenShots: 0.1
   maxAmmo: 10
-  projectileVelocity: 150
+  projectileVelocity: 75
   hipBloom: 0
   reloadTime: 0.5
   projectilePrefab: {fileID: -6026499980388658381, guid: cf2111efdc820ea44842237ccdecdffc, type: 3}
