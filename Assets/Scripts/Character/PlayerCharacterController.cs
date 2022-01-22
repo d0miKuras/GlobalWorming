@@ -12,6 +12,7 @@ public class PlayerCharacterController : MonoBehaviour
     public Camera playerCamera;
     public Transform weaponParent; // keeps track of the weapon parent transform
     public GameObject CameraRoot;
+    public PauseMenu pauseMenu;
 
     [Header("General")]
     [Tooltip("Force applied downward when in the air")]
@@ -136,6 +137,8 @@ public class PlayerCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pauseMenu.gamePaused)
+            return;
         // TODO: add death on killheight
         hasJumpedThisFrame = false;
         // bool wasGrounded = isGrounded;
