@@ -12,7 +12,7 @@ public class PlayerCharacterController : MonoBehaviour
     public Camera playerCamera;
     public Transform weaponParent; // keeps track of the weapon parent transform
     public GameObject CameraRoot;
-    public PauseMenu pauseMenu;
+    PauseMenu pauseMenu;
 
     [Header("General")]
     [Tooltip("Force applied downward when in the air")]
@@ -120,6 +120,8 @@ public class PlayerCharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pauseMenu = GameObject.Find("HUD").GetComponent<PauseMenu>();
+
         _inputs = GetComponent<PlayerInputs>();
         _controller = GetComponent<CharacterController>();
         _weaponManager = GetComponent<MyWeaponManager>();

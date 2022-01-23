@@ -10,7 +10,6 @@ public enum WeaponShootType
     Charged
 }
 
-
 public class WeaponController : MonoBehaviour
 {
     #region Variables
@@ -96,7 +95,7 @@ public class WeaponController : MonoBehaviour
 
     public bool isAiming { get; set; }
 
-
+    PauseMenu pauseMenu;
 
 
 
@@ -126,6 +125,7 @@ public class WeaponController : MonoBehaviour
     }
     void Start()
     {
+        pauseMenu = GameObject.Find("HUD").GetComponent<PauseMenu>();
         // m_Controller = owner.transform.GetComponent<PlayerCharacterController>(); 
     }
 
@@ -183,6 +183,8 @@ public class WeaponController : MonoBehaviour
 
     bool TryShoot()
     {
+        if (pauseMenu.gamePaused)
+            return false;
         if (m_CurrentAmmo > 0 && m_LastTimeShot + delayBetweenShots < Time.time)
         {
             var playerController = owner.transform.GetComponent<PlayerCharacterController>();
