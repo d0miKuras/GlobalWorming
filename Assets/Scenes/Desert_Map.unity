@@ -4842,11 +4842,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1761457050208697361, guid: bae807bc1de9143fda03687618a02862, type: 3}
       propertyPath: knockbackDuration
-      value: 0.6
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1761457050208697361, guid: bae807bc1de9143fda03687618a02862, type: 3}
       propertyPath: knockbackMagnitude
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1761457050208697364, guid: bae807bc1de9143fda03687618a02862, type: 3}
       propertyPath: m_Name
