@@ -8,18 +8,6 @@ public class SpawnManager : MonoBehaviour
     public GameObject playerInstance;
     public List<Transform> enemySpawns; 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public GameObject SpawnEnemy(GameObject enemyPrefab)
     {
         var randomSpawnIndex = Random.Range(0, enemySpawns.Count - 1);

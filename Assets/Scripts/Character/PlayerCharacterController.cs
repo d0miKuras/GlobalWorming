@@ -25,6 +25,9 @@ public class PlayerCharacterController : MonoBehaviour
     public float sprintingFOV = 60f;
     public float sprintFOVChangeSpeed;
 
+    public float knockbackMagnitude = 5f;
+    public float knockbackDuration = 0.3f;
+
     [Space(10)]
     [Header("Movement")]
     [Tooltip("Max movement speed when grounded (when not sprinting)")]
@@ -79,6 +82,8 @@ public class PlayerCharacterController : MonoBehaviour
     public float weaponBobSmoothing = 2f;
     float _idleCounter; // goes to infinity, keeps track of time for headbob
     float _movementCounter; // goes to infinity, keeps track of time for headbob
+
+    bool _blockMovement = false;
 
     Vector3 weaponParentOrigin; // for head bobbing
     Vector3 targetWeaponBobPosition;
@@ -218,82 +223,86 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void HandleCharacterMovement()
     {
-        isSprinting = _inputs.GetSprint();
-        if (isSprinting)
+        if(!_blockMovement)
         {
-            SetFOV(Mathf.Lerp(playerCamera.fieldOfView, sprintingFOV, sprintFOVChangeSpeed * Time.deltaTime));
-            isSprinting = SetCrouchingState(false, false);
-        }
-        else
-            SetFOV(Mathf.Lerp(playerCamera.fieldOfView, defautFOV, sprintFOVChangeSpeed * Time.deltaTime));
-
-        float speedModifier = isSprinting ? sprintSpeedModifier : 1f;
-
-        Vector3 worldSpaceMoveInput = transform.TransformVector(new Vector3(_inputs.GetMove().x, 0f, _inputs.GetMove().y));
-        // Debug.Log(worldSpaceMoveInput);
-
-        if (isGrounded || (wallRunComponent != null && wallRunComponent.IsWallRunning()))
-        {
-            // calculate the desired velocity from inputs, max speed, and current slope
-            Vector3 targetVelocity = worldSpaceMoveInput * maxSpeedOnGround * speedModifier;
-            // Debug.Log(targetVelocity);
-            // reduce speed if crouching by crouch speed ratio
-            if (isCrouching)
-                targetVelocity *= maxSpeedCrouchedRatio;
-            // slope adjustments
-            targetVelocity = GetDirectionReorientedOnSlope(targetVelocity.normalized, _groundNormal) * targetVelocity.magnitude;
-
-
-            // smoothly interpolate between our current velocity and the target velocity based on acceleration speed
-            characterVelocity = Vector3.Lerp(characterVelocity, targetVelocity, movementSharpnessOnGround * Time.deltaTime);
-        }
-        // jumping
-        if ((isGrounded || (wallRunComponent != null && wallRunComponent.IsWallRunning())) && _inputs.GetJump())
-        {
-            // force the crouch state to false
-            if (SetCrouchingState(false, false))
+            isSprinting = _inputs.GetSprint();
+            if (isSprinting)
             {
-                if (isGrounded)
-                {
-                    // start by canceling out the vertical component of our velocity
-                    characterVelocity = new Vector3(characterVelocity.x, 0f, characterVelocity.z);
-                    // then, add the jumpSpeed value upwards
-                    characterVelocity += Vector3.up * jumpForce;
-                }
-                else
-                {
-                    characterVelocity = new Vector3(characterVelocity.x, 0f, characterVelocity.z);
-                    // tadd the jumpspeed upwards from the wall
-                    characterVelocity += wallRunComponent.GetWallJumpDirection() * jumpForce;
-                }
-
-
-                // remember last time we jumped because we need to prevent snapping to ground for a short time
-                _lastTimeJumped = Time.time;
-                hasJumpedThisFrame = true;
-
-                // force grounding to false;
-                isGrounded = false;
-                _groundNormal = Vector3.up;
+                SetFOV(Mathf.Lerp(playerCamera.fieldOfView, sprintingFOV, sprintFOVChangeSpeed * Time.deltaTime));
+                isSprinting = SetCrouchingState(false, false);
             }
+            else
+                SetFOV(Mathf.Lerp(playerCamera.fieldOfView, defautFOV, sprintFOVChangeSpeed * Time.deltaTime));
 
+            float speedModifier = isSprinting ? sprintSpeedModifier : 1f;
+
+            Vector3 worldSpaceMoveInput = transform.TransformVector(new Vector3(_inputs.GetMove().x, 0f, _inputs.GetMove().y));
+            // Debug.Log(worldSpaceMoveInput);
+
+            if (isGrounded || (wallRunComponent != null && wallRunComponent.IsWallRunning()))
+            {
+                // calculate the desired velocity from inputs, max speed, and current slope
+                Vector3 targetVelocity = worldSpaceMoveInput * maxSpeedOnGround * speedModifier;
+                // Debug.Log(targetVelocity);
+                // reduce speed if crouching by crouch speed ratio
+                if (isCrouching)
+                    targetVelocity *= maxSpeedCrouchedRatio;
+                // slope adjustments
+                targetVelocity = GetDirectionReorientedOnSlope(targetVelocity.normalized, _groundNormal) * targetVelocity.magnitude;
+
+
+                // smoothly interpolate between our current velocity and the target velocity based on acceleration speed
+                characterVelocity = Vector3.Lerp(characterVelocity, targetVelocity, movementSharpnessOnGround * Time.deltaTime);
+            }
+            // jumping
+            if ((isGrounded || (wallRunComponent != null && wallRunComponent.IsWallRunning())) && _inputs.GetJump())
+            {
+                // force the crouch state to false
+                if (SetCrouchingState(false, false))
+                {
+                    if (isGrounded)
+                    {
+                        // start by canceling out the vertical component of our velocity
+                        characterVelocity = new Vector3(characterVelocity.x, 0f, characterVelocity.z);
+                        // then, add the jumpSpeed value upwards
+                        characterVelocity += Vector3.up * jumpForce;
+                    }
+                    else
+                    {
+                        characterVelocity = new Vector3(characterVelocity.x, 0f, characterVelocity.z);
+                        // tadd the jumpspeed upwards from the wall
+                        characterVelocity += wallRunComponent.GetWallJumpDirection() * jumpForce;
+                    }
+
+
+                    // remember last time we jumped because we need to prevent snapping to ground for a short time
+                    _lastTimeJumped = Time.time;
+                    hasJumpedThisFrame = true;
+
+                    // force grounding to false;
+                    isGrounded = false;
+                    _groundNormal = Vector3.up;
+                }
+
+            }
+            // handle air movement
+            else
+            {
+                if (wallRunComponent == null || (wallRunComponent != null && !wallRunComponent.IsWallRunning()))
+                    // add air acceleration
+                    characterVelocity += worldSpaceMoveInput * accelerationSpeedInAir * Time.deltaTime;
+
+                // limit air speed to maximum horizontal
+                float verticalVelocity = characterVelocity.y;
+                Vector3 horizontalVelocity = Vector3.ProjectOnPlane(characterVelocity, Vector3.up);
+                horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxSpeedInAir * speedModifier);
+                characterVelocity = horizontalVelocity + (Vector3.up * verticalVelocity);
+
+                // apply the gravity to the velocity
+                characterVelocity += Vector3.down * gravityDownForce * Time.deltaTime;
+            }
         }
-        // handle air movement
-        else
-        {
-            if (wallRunComponent == null || (wallRunComponent != null && !wallRunComponent.IsWallRunning()))
-                // add air acceleration
-                characterVelocity += worldSpaceMoveInput * accelerationSpeedInAir * Time.deltaTime;
-
-            // limit air speed to maximum horizontal
-            float verticalVelocity = characterVelocity.y;
-            Vector3 horizontalVelocity = Vector3.ProjectOnPlane(characterVelocity, Vector3.up);
-            horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxSpeedInAir * speedModifier);
-            characterVelocity = horizontalVelocity + (Vector3.up * verticalVelocity);
-
-            // apply the gravity to the velocity
-            characterVelocity += Vector3.down * gravityDownForce * Time.deltaTime;
-        }
+        
 
         // apply the final calculated velocity value as a character movement
         Vector3 capsuleBottomBeforeMove = GetCapsuleBottomHemisphere();
@@ -430,5 +439,27 @@ public class PlayerCharacterController : MonoBehaviour
         playerCamera.fieldOfView = fov;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.tag == "Enemy")
+        {
+            Vector3 direction = transform.position - other.transform.position;
+            Vector3 startPos = transform.position;
+            Vector3 targetPos = startPos + (direction * knockbackMagnitude);
+
+            characterVelocity = direction * knockbackMagnitude;
+            
+            StartCoroutine(Knockback());
+        }
+    }
+
+    IEnumerator Knockback()
+    {
+        _blockMovement = true;
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        _blockMovement = false;
+    }
     #endregion
 }
