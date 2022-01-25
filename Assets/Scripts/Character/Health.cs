@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     private float _currentHealth;
     public HealthBar healthBar;
     public ParticleSystem deathParticles;
+    CanvasGroup lowHPOverlay;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,8 @@ public class Health : MonoBehaviour
         if(this.tag == "Player")
         {
             healthBar = GameObject.Find("HUD").transform.Find("HP").GetComponent<HealthBar>();
+            lowHPOverlay = GameObject.Find("HUD").transform.Find("LowHPOverlay").GetComponent<CanvasGroup>();
+            lowHPOverlay.alpha = 0.0f;
         }
     }
 
@@ -31,7 +34,9 @@ public class Health : MonoBehaviour
     {
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0.0f, _currentHealth);
         Debug.Log($"Damage taken: {damage}");
-        if(healthBar != null) healthBar.UpdateHealthBar(_currentHealth);
+        if (healthBar != null) healthBar.UpdateHealthBar(_currentHealth);
+        if (gameObject.tag == "Player" && _currentHealth < 40.0) {lowHPOverlay.alpha = (40.0f - _currentHealth) / 40.0f;
+        Debug.Log(lowHPOverlay.alpha); }
         if(_currentHealth <= 0.0f)
         {
             Die();
