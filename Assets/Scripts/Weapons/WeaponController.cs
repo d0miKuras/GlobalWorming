@@ -96,7 +96,7 @@ public class WeaponController : MonoBehaviour
     public bool isAiming { get; set; }
 
     PauseMenu pauseMenu;
-
+    AudioSource shootingSound;
 
 
     #region Private Variables
@@ -126,6 +126,7 @@ public class WeaponController : MonoBehaviour
     void Start()
     {
         pauseMenu = GameObject.Find("HUD").GetComponent<PauseMenu>();
+        shootingSound = gameObject.GetComponent<AudioSource>();
         // m_Controller = owner.transform.GetComponent<PlayerCharacterController>(); 
     }
 
@@ -217,6 +218,8 @@ public class WeaponController : MonoBehaviour
             wr_PositionalRecoil += new Vector3(Random.Range(-weaponRecoil_RecoilKickBack.x, weaponRecoil_RecoilKickBack.x), Random.Range(-weaponRecoil_RecoilKickBack.y, weaponRecoil_RecoilKickBack.y), weaponRecoil_RecoilKickBack.z); // weapon recoil kick back
         }
 
+        if (shootingSound != null)
+            shootingSound.Play();
         newProjectile.Shoot(this);
     }
 

@@ -228,11 +228,17 @@ public class PlayerCharacterController : MonoBehaviour
             isSprinting = _inputs.GetSprint();
             if (isSprinting)
             {
+                if (!gameObject.GetComponent<AudioSource>().isPlaying)
+                    gameObject.GetComponent<AudioSource>().Play();
                 SetFOV(Mathf.Lerp(playerCamera.fieldOfView, sprintingFOV, sprintFOVChangeSpeed * Time.deltaTime));
                 isSprinting = SetCrouchingState(false, false);
             }
             else
+            {
                 SetFOV(Mathf.Lerp(playerCamera.fieldOfView, defautFOV, sprintFOVChangeSpeed * Time.deltaTime));
+                if (gameObject.GetComponent<AudioSource>().isPlaying)
+                    gameObject.GetComponent<AudioSource>().Stop();
+            }
 
             float speedModifier = isSprinting ? sprintSpeedModifier : 1f;
 
