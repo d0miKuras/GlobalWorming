@@ -15,6 +15,10 @@ public class Health : MonoBehaviour
     void Start()
     {
         _currentHealth = maxHealth;
+        if(this.tag == "Player")
+        {
+            healthBar = GameObject.Find("HUD").transform.Find("HP").GetComponent<HealthBar>();
+        }
     }
 
     // Update is called once per frame
