@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 4611128384903655813}
+  deathParticles: {fileID: 774950645129949645, guid: badd15b26fd0cea4199f2b67c23ce5da, type: 3}
 --- !u!195 &831251476108699946
 NavMeshAgent:
   m_ObjectHideFlags: 0

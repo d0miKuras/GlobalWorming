@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     public float maxHealth = 100f;
     private float _currentHealth;
     public HealthBar healthBar;
+    public ParticleSystem deathParticles;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +36,11 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        if(gameObject.tag == "Enemy") 
+        if (gameObject.tag == "Enemy")
+        {
             GameObject.Find("GameManager").GetComponent<GameManager>().EnemyDied(); // Decreases the amount of alive enemies in the game manager.
+            GameObject.Instantiate(deathParticles.gameObject, this.transform.position, this.transform.rotation);
+        }
         Destroy(gameObject);
     }
 }
