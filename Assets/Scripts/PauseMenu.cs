@@ -49,4 +49,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1.0f;
         gamePaused = false;
     }
+
+    public void Quit()
+    {
+        Debug.Log("Quitting the game...");
+        Application.Quit();
+    }
 }

@@ -628,6 +628,7 @@ MonoBehaviour:
   fireDown: 0
   fireHeld: 0
   fireReleased: 0
+  reloadPressed: 0
   triggerSprint: 0
   triggerAim: 0
   analogMovement: 0
@@ -646,20 +647,20 @@ MonoBehaviour:
   playerCamera: {fileID: 1761457049468273322}
   weaponParent: {fileID: 1761457049589004155}
   CameraRoot: {fileID: 1761457049928325904}
-  gravityDownForce: 20
+  gravityDownForce: 15
   groundCheckLayers:
     serializedVersion: 2
     m_Bits: 64
   groundCheckDistance: 0.32
-  defautFOV: 50
-  sprintingFOV: 80
+  defautFOV: 65
+  sprintingFOV: 75
   sprintFOVChangeSpeed: 10
-  maxSpeedOnGround: 4.61
-  movementSharpnessOnGround: 5.99
+  maxSpeedOnGround: 2.8
+  movementSharpnessOnGround: 8
   maxSpeedCrouchedRatio: 0.5
   maxSpeedInAir: 5.8
   accelerationSpeedInAir: 25
-  sprintSpeedModifier: 2
+  sprintSpeedModifier: 1.2
   killHeight: -50
   rotationSpeed: 0.52
   aimingRotationMultiplier: 0.4
@@ -696,9 +697,9 @@ MonoBehaviour:
   minimumHeight: 0.7
   maxAngleRoll: 30
   normalizedAngleThreshold: 0.3
-  jumpDuration: 0.25
-  wallBouncing: 3
-  cameraTransitionDuration: 0.04
+  jumpDuration: 0.4
+  wallBouncing: 5
+  cameraTransitionDuration: 0.03
   wallGravityDownForce: 20
   useSprint: 0
 --- !u!114 &1761457050208697363
@@ -732,6 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthBar: {fileID: 0}
 --- !u!1 &1761457050874840958
 GameObject:
   m_ObjectHideFlags: 0

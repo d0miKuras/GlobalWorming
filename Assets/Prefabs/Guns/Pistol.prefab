@@ -228,16 +228,16 @@ MonoBehaviour:
   projectilePrefab: {fileID: -6026499980388658381, guid: cf2111efdc820ea44842237ccdecdffc, type: 3}
   rotationSpeed: 30
   returnSpeed: 5
-  hipfireCameraRecoilRotation: {x: 5, y: 5, z: 0}
-  adsCameraRecoilRotation: {x: 2.5, y: 2.5, z: 0}
+  hipfireCameraRecoilRotation: {x: 2.5, y: 2.5, z: 0}
+  adsCameraRecoilRotation: {x: 1.2, y: 1.2, z: 0}
   weaponRecoil_Position: {fileID: 1049447401399452735}
   weaponRecoil_Rotation: {fileID: 849201924681786483}
-  weaponRecoil_PositionalSpeed: 8
-  weaponRecoil_RotationalSpeed: 8
+  weaponRecoil_PositionalSpeed: 12
+  weaponRecoil_RotationalSpeed: 12
   weaponRecoil_PositionalReturnSpeed: 18
   weaponRecoil_RotationalReturnSpeed: 38
-  weaponRecoil_RecoilRotation: {x: 10, y: 5, z: 7}
-  weaponRecoil_RecoilKickBack: {x: 0.015, y: 0, z: -0.2}
+  weaponRecoil_RecoilRotation: {x: 100, y: 7, z: 9}
+  weaponRecoil_RecoilKickBack: {x: 0.04, y: 0.2, z: -0.5}
   weaponRecoil_RotationAim: {x: 10, y: 4, z: 6}
   weaponRecoil_RecoilKickBackAim: {x: 0.015, y: 0, z: -0.2}
   aimSpeed: 5
