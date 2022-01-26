@@ -5,10 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
     [HideInInspector]
     public bool gamePaused = false;
     Keyboard keyboard = Keyboard.current;
+
+    [Header("When paused:")]
+    public GameObject[] objectsToEnable;
+    public AudioSource[] soundsToPause;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +42,18 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         gamePaused = true;
         Time.timeScale = 0.0f;
-        pauseMenu.SetActive(true);
+        foreach (GameObject gm in objectsToEnable)
+            gm.SetActive(true);
+        foreach (AudioSource ac in soundsToPause)
+            ac.Pause();
     }
 
     public void Resume()
     {
-        pauseMenu.SetActive(false);
+        foreach (GameObject gm in objectsToEnable)
+            gm.SetActive(false);
+        foreach (AudioSource ac in soundsToPause)
+            ac.UnPause();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1.0f;
