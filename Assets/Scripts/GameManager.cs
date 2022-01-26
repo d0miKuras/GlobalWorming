@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public enum GameState
 {
+    Pregame,
     Prewave,
     Wave
 };
@@ -22,9 +23,33 @@ public class GameManager : MonoBehaviour
     private bool _playerAlive = true;
     private int _currentWave = 1;
     private SpawnManager _spawnManager;
-    private GameState state = GameState.Prewave;
+    private GameState state = GameState.Pregame;
+
+    public Animation startAnimation;
+
+    public GameObject[] objectsToDisable;
+    public GameObject[] objectsToEnable;
+
     // Start is called before the first frame update
     void Start()
+    {
+        state = GameState.Pregame;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(state == GameState.Pregame && other.tag == "Player")
+        {
+            startAnimation.Play();
+            foreach (GameObject gm in objectsToDisable)
+                gm.SetActive(false);
+            foreach (GameObject gm in objectsToEnable)
+                gm.SetActive(true);
+            StartWaves();
+        }
+    }
+
+    void StartWaves()
     {
         SetCurrentWave();
         _spawnManager = GetComponent<SpawnManager>();
@@ -53,9 +78,9 @@ public class GameManager : MonoBehaviour
     IEnumerator StartNewWave()
     {
         _currentWave++;
-        SetCurrentWave();
         state = GameState.Prewave;
         yield return new WaitForSeconds(timeBetweenWaves);
+        SetCurrentWave();
         SpawnEnemies();
     }
 
