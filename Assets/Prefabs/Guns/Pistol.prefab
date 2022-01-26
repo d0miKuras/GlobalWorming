@@ -220,7 +220,7 @@ MonoBehaviour:
   shootType: 0
   weaponRoot: {fileID: 6418618832652323795}
   weaponMuzzle: {fileID: 6625897938034809851}
-  damage: 10
+  damage: 20
   delayBetweenShots: 0.1
   maxAmmo: 10
   projectileVelocity: 75
