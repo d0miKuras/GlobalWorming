@@ -16,6 +16,10 @@ public class Health : MonoBehaviour
     AudioSource hurtSoundComponent;
     GameManager gameManager;
     bool died = false;
+    public float invincibilityTime = 0.0f;
+    float invincibilityCooldown = 0.0f;
+    bool invincible = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,7 @@ public class Health : MonoBehaviour
         _currentHealth = maxHealth;
         if (this.tag == "Player")
         {
+            invincibilityTime = 1.0f;
             healthBar = GameObject.Find("HUD").transform.Find("HP").GetComponent<HealthBar>();
             lowHPOverlay = GameObject.Find("HUD").transform.Find("LowHPOverlay").GetComponent<CanvasGroup>();
             lowHPOverlay.alpha = 0.0f;
@@ -35,13 +40,29 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (invincible)
+        {
+            invincibilityCooldown -= Time.deltaTime;
+            if (invincibilityCooldown <= 0.0)
+            {
+                invincible = false;
+                invincibilityCooldown = 0.0f;
+            }
+        }
+    }
+
+    public void StartInvincibility()
+    {
+        invincible = true;
+        invincibilityCooldown = invincibilityTime;
     }
 
     public void TakeDamage(float damage)
     {
-        if (died)
+        if (died || invincible)
             return;
+
+        StartInvincibility();
 
         if (hurtSound != null)
             hurtSoundComponent.PlayOneShot(hurtSound);
@@ -49,7 +70,9 @@ public class Health : MonoBehaviour
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0.0f, _currentHealth);
         Debug.Log($"Damage taken: {damage}");
         if (healthBar != null) healthBar.UpdateHealthBar(_currentHealth);
+
         if (gameObject.tag == "Player" && _currentHealth < 40.0) {lowHPOverlay.alpha = (40.0f - _currentHealth) / 40.0f;
+
         Debug.Log(lowHPOverlay.alpha); }
         if(_currentHealth <= 0.0f)
         {
