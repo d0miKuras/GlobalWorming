@@ -222,7 +222,7 @@ MonoBehaviour:
   weaponMuzzle: {fileID: 6625897938034809851}
   damage: 20
   delayBetweenShots: 0.1
-  maxAmmo: 10
+  maxAmmo: 15
   projectileVelocity: 75
   hipBloom: 0
   reloadTime: 0.5

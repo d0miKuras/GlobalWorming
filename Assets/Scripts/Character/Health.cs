@@ -12,16 +12,24 @@ public class Health : MonoBehaviour
     public HealthBar healthBar;
     public ParticleSystem deathParticles;
     CanvasGroup lowHPOverlay;
+    public AudioClip hurtSound;
+    AudioSource hurtSoundComponent;
+    GameManager gameManager;
+    bool died = false;
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        hurtSoundComponent = gameObject.AddComponent<AudioSource>();
         _currentHealth = maxHealth;
-        if(this.tag == "Player")
+        if (this.tag == "Player")
         {
             healthBar = GameObject.Find("HUD").transform.Find("HP").GetComponent<HealthBar>();
             lowHPOverlay = GameObject.Find("HUD").transform.Find("LowHPOverlay").GetComponent<CanvasGroup>();
             lowHPOverlay.alpha = 0.0f;
         }
+        else
+            hurtSoundComponent.spatialBlend = 1.0f;
     }
 
     // Update is called once per frame
@@ -32,6 +40,12 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (died)
+            return;
+
+        if (hurtSound != null)
+            hurtSoundComponent.PlayOneShot(hurtSound);
+
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0.0f, _currentHealth);
         Debug.Log($"Damage taken: {damage}");
         if (healthBar != null) healthBar.UpdateHealthBar(_currentHealth);
@@ -45,11 +59,19 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        died = true;
         if (gameObject.tag == "Enemy")
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().EnemyDied(); // Decreases the amount of alive enemies in the game manager.
+            gameManager.EnemyDied(); // Decreases the amount of alive enemies in the game manager.
             GameObject.Instantiate(deathParticles.gameObject, this.transform.position, this.transform.rotation);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else if(gameObject.tag == "Player")
+        {
+            Time.timeScale = 0.2f;
+            if (hurtSound != null)
+                hurtSoundComponent.PlayOneShot(hurtSound);
+            gameManager.PlayerDied();
+        }
     }
 }
