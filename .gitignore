@@ -40,6 +40,5 @@ sysinfo.txt
 
 #Logs
 *.log
-*.log
 
 .gradle/
