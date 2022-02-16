@@ -22,12 +22,14 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+*.mdb
 *.opendb
 *.VC.db
 
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
+*.mdb.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
@@ -38,4 +40,5 @@ sysinfo.txt
 
 #Logs
 *.log
-*.log
+
+.gradle/
